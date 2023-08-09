@@ -1,23 +1,32 @@
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Navegacion from "./plantilla/Navegacion";
+import ListadoDeProductos from "./productos/ListadoDeProductos";
+import AgregarProducto from "./productos/AgregarProducto";
+import EditarProducto from "./productos/EditarProducto";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="container">
+      <BrowserRouter>
+        <Navegacion></Navegacion>
+        <Routes>
+          <Route
+            exact
+            path="/"
+            element={<ListadoDeProductos></ListadoDeProductos>}
+          ></Route>
+          <Route
+            exact
+            path="/agregar"
+            element={<AgregarProducto></AgregarProducto>}
+          ></Route>
+          <Route
+            exact
+            path="/editar/:id"
+            element={<EditarProducto></EditarProducto>}
+          ></Route>
+        </Routes>
+      </BrowserRouter>
     </div>
   );
 }
